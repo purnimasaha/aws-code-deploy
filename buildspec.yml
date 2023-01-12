@@ -1,14 +1,18 @@
 version: 0.2
 
 phases:
+  install:
+    runtime-versions:
+      java: corretto8
   build:
     commands:
-      - echo Entered the build phase...
-      - mvn clean package
+      - mvn clean install
   post_build:
     commands:
-      - echo Build completed successfully
+      - echo Build completed
 artifacts:
   files:
-    - target/order-service.jar
+    - target/*.jar
+    - scripts/*.sh
+    - appspec.yml
   discard-paths: yes
